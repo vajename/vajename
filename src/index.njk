@@ -1,0 +1,14 @@
+{% extends "base.njk" %}
+
+{% block links %}
+  <link rel="stylesheet" href="/assets/word.css"/>
+{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block body %}
+  <section x-data="searchResults">
+    <article style="display: grid; place-items: center;">به‌زودی...</article>
+    {% include "footer.njk" %}
+  </section>
+{% endblock %}

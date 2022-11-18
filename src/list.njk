@@ -1,0 +1,66 @@
+{%- from "macros.njk" import breadcrumb -%}
+{% extends "base.njk" %}
+
+{% block links %}
+  <link rel="stylesheet" href="/assets/letter.css"/>
+  <script>
+    function rowClick(row) {
+      const {link} = row.dataset;
+      window.location = link;
+    }
+  </script>
+{% endblock %}
+
+{% set title = 'فهرست موضوعی' %}
+
+{% block body %}
+  <section class="letter">
+    <header>
+      {{
+        breadcrumb([{text: 'خانه', link: '/'}, {text: "فهرست موضوعی", link: '/list' }])
+      }}
+      <section id="titles">
+        <hgroup>
+          <h1>فهرست موضوعی</h1>
+          <h2>
+            Category Index
+          </h2>
+        </hgroup>
+      </section>
+    </header>
+
+    <article>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>عنوان</th>
+              <th>توضیح</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for key, value in categories | dictsort-%}
+              <tr>
+                <td>
+                  {{loop.index | toFaDigits}}
+                </td>
+                <td>
+                  <a href="//{{value.slug}}.{{info.url}}">
+                    {{ value.name }}
+                  </a>
+                </td>
+                <td>
+                  <p class="description">{{value.description | striptags(true) | escape | truncate(200) | safe}}</p>
+                  {# {{word.templateContent | truncate(100) | safe}} #}
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    {% include "footer.njk" %}
+  </section>
+{% endblock %}

@@ -1,0 +1,11 @@
+# node
+/node_modules
+
+# 11ty
+/_site
+/public
+.cache
+
+#misc
+*.local
+tests

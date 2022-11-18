@@ -1,0 +1,61 @@
+{% set navLinks = [
+  {
+    text: 'خانه',
+    link: '/'
+  }, {
+    text: 'فهرست موضوعی',
+    link: '/list'
+  }, {
+    text: 'دربارهٔ ما',
+    link: '/about'
+  }
+] %}
+
+<footer>
+  <section id='information'>
+    <div id="pages" class="footer-info-wrapper">
+      <h4>صفحات</h4>
+      <ul>
+        {% for l in navLinks -%}
+          <li>
+            <a href="{{l.link}}">
+              <span class="icon">{% svg "arrow-left-small" %}</span>
+              {{l.text}}
+            </a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div id="description" class="footer-info-wrapper">
+      <h4>{{info. name}}</h4>
+      <p>
+        {{info.footer_description | trim}}
+      </p>
+    </div>
+    <div id="logo" class="footer-info-wrapper">
+      <div id='logo-wrapper'>
+        <a href="/">
+          <span class="icon svg-inline">{% svg "logo" %}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id='footer'>
+    {# <p>
+      کاری از تیم گلاسوری
+    </p> #}
+    <p>به تاریخ ــــ۱۴</p>
+
+    <div id='refrence'>
+      <a href="{{info.github_url}}" target="_blank" rel="noopener">
+        {% svg "github" %}
+      </a>
+    </div>
+  </section>
+</footer>
+
+<div id="print-footer" style="display: none;">
+  <p>{{info.title}}</p>
+  <p style="direction: ltr">//{{info.url}}</p>
+</div>
