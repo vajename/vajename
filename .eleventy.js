@@ -112,7 +112,6 @@ module.exports = function (eleventyConfig) {
 
   /******* PASSTHROUGH  *****/
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
-  eleventyConfig.addPassthroughCopy({ admin: "admin" });
 
   /******* Markdown Options  *****/
   const options = {
