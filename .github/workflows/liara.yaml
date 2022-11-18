@@ -11,11 +11,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - name: update-liara
-        env:
-          LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
+      - name: build
         run: |
           npm i
           npm run build
-          cd public
-          @liara/cli@3 deploy --app="vajename" --api-token="$LIARA_TOKEN" --detach
+      - name: deploy to liara
+        working-directory: public
+        env:
+          LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
+        run: npx @liara/cli@3 deploy --app="vajename" --api-token="$LIARA_TOKEN" --detach
